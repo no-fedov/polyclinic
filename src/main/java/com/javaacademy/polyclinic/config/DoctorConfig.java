@@ -16,26 +16,26 @@ import static com.javaacademy.polyclinic.Specialization.THERAPIST;
 public class DoctorConfig {
 
     @Bean("dentist")
-    public Doctor getDentist(@Value("${admissions.costs[0]}") String cost) {
+    public Doctor getDentist(@Value("${admissions.costs[0]}") BigDecimal cost) {
         return generateDoctor(DENTIST, cost);
     }
 
     @Bean("therapist")
-    public Doctor getTherapist(@Value("${admissions.costs[1]}") String cost) {
+    public Doctor getTherapist(@Value("${admissions.costs[1]}") BigDecimal cost) {
         return generateDoctor(THERAPIST, cost);
     }
 
     @Bean("juniorSurgeon")
-    public Doctor getJuniorSurgeon(@Value("${admissions.costs[2]}") String cost) {
+    public Doctor getJuniorSurgeon(@Value("${admissions.costs[2]}") BigDecimal cost) {
         return generateDoctor(SURGEON, cost);
     }
 
     @Bean("seniorSurgeon")
-    public Doctor getSeniorSurgeon(@Value("${admissions.costs[3]}") String cost) {
+    public Doctor getSeniorSurgeon(@Value("${admissions.costs[3]}") BigDecimal cost) {
         return generateDoctor(SURGEON, cost);
     }
 
-    private Doctor generateDoctor(Specialization specialization, String costAdmission) {
-        return new Doctor(specialization, BigDecimal.valueOf(Long.parseLong(costAdmission)));
+    private Doctor generateDoctor(Specialization specialization, BigDecimal costAdmission) {
+        return new Doctor(specialization, costAdmission);
     }
 }
